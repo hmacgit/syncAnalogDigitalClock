@@ -6,8 +6,9 @@ import { AppComponent } from './app.component';
 import { AnalogClockComponent } from './analog-clock/analog-clock.component';
 import { DigitalClockComponent } from './digital-clock/digital-clock.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,11 +17,12 @@ import {MatButtonModule} from '@angular/material/button';
     DigitalClockComponent
   ],
   imports: [
+    MatCardModule,
+    MatButtonModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatCardModule,
-    MatButtonModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
