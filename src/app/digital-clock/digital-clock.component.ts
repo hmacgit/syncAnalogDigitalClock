@@ -4,6 +4,7 @@ import {
   Subscription
 } from 'rxjs';
 import {Store} from '@ngxs/store';
+import {SetClock} from '../../store/dashboard/states/clock/clock.actions';
 
 @Component({
   selector: 'app-digital-clock',
@@ -40,6 +41,8 @@ export class DigitalClockComponent implements OnInit {
   }
 
   setDate(date: Date): void {
+    this.store.dispatch(new SetClock({date: date.getTime().toString()}) );
+
     this.day = this.daysOfweek[date.getDay()];
     this.hour = date.getHours() % 12  ?  '12' : date.getHours().toString();
     this.minute = date.getMinutes() < 10 ? '0' + date.getMinutes() :  date.getMinutes().toString();

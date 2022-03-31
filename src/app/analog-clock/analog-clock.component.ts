@@ -1,4 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  ClockState,
+  ClockStateModel
+} from '../../store/dashboard/states/clock/clock.state';
+import {
+  Select,
+  Store
+} from '@ngxs/store';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-analog-clock',
@@ -7,9 +17,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnalogClockComponent implements OnInit {
 
-  constructor() { }
+  @Select(ClockState) clockState$: Observable<string>;
+  clockSt$: Observable<string>;
+  time: string;
+
+  constructor(private store: Store) { }
 
   ngOnInit(): void {
+/*
+    this.clockState$ = this.store
+      .select(ClockState.getState)
+      .pipe(
+        map((x) => 'date')
+        );*/
+
+
   }
 
   hourHandStyle : {transform: string};
@@ -25,7 +47,10 @@ export class AnalogClockComponent implements OnInit {
   second: number = 0;
 
   ngAfterViewInit() {
-    this.timerId = this.getTime();
+    //this.timerId = this.getTime();
+    this.clockSt$.subscribe(
+      (x) => {this.timerId = x; console.log(x)}
+    );
   }
 
   animateAnalogClock() {
