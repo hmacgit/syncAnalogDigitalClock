@@ -19,13 +19,13 @@ import {
 export class DigitalClockComponent implements OnInit {
   isStart: boolean = false;
   subscription = new Subscription();
+  runtime: Date = new Date();
 
   daysOfweek = ['sun', 'mon', 'tues', 'wed', 'thur', 'fri', 'sat'];
   day: any;
-  hour: string;
-  minute: string
-  second: string
-  ampm: string
+  hour: number;
+  minute: number;
+  second: number;
 
   formHour = new FormControl('', Validators.required);
   formMinute = new FormControl('', Validators.required);
@@ -40,9 +40,11 @@ export class DigitalClockComponent implements OnInit {
 
   startClock(): void {
     if(!this.isStart) {
-      this.subscription = interval(1000).subscribe(()=>
-        this.setDate(new Date)
-      )
+      this.subscription = interval(1000).subscribe(()=> {
+          this.runtime = this.runtime ? new Date : this.runtime;
+          return this.setDate(this.runtime);
+          //return this.setDate(new Date());
+      });
       this.isStart=true;
     }
   }
@@ -51,10 +53,9 @@ export class DigitalClockComponent implements OnInit {
     this.store.dispatch(new SetClock({date: date.toString()}) );
 
     this.day = this.daysOfweek[date.getDay()];
-    this.hour = date.getHours() % 12  ?  '12' : date.getHours().toString();
-    this.minute = date.getMinutes() < 10 ? '0' + date.getMinutes() :  date.getMinutes().toString();
-    this.second = date.getSeconds()  < 10 ? '0' + date.getSeconds() : date.getSeconds().toString();
-    this.ampm = date.getHours() < 12 ? 'AM' : 'PM';
+    this.hour = date.getHours();
+    this.minute = date.getMinutes();
+    this.second = date.getSeconds();
 
     this.formHour.setValue(this.hour);
     this.formMinute.setValue(this.minute);
@@ -64,6 +65,12 @@ export class DigitalClockComponent implements OnInit {
 
   updateClock() {
 
+    const date = new Date();
+    date.setHours(Number(this.formHour.value));
+    date.setMinutes(Number(this.formMinute.value));
+    date.setSeconds(Number(this.formSecond.value));
+
+    this.runtime = new Date (date);
     this.startClock();
   }
 
