@@ -8,8 +8,9 @@
       {{hour}} : {{minute}} : {{second}} {{ampm}}
       <div>
 
-        <input type="text" class="col-1"> : <input type="text" class="col-1"> :
-        <input type="text" class="col-1"> : <input type="text" class="col-1">
+        <input type="text" (focus)="stopClock()" (blur)="updateClock()" class="col-1"> :
+        <input type="text" (focus)="stopClock()" (blur)="updateClock()" class="col-1"> :
+        <input type="text" (focus)="stopClock()" (blur)="updateClock()" class="col-1"> :
       </div>
       <div>
         <button (click)="startClock()" mat-raised-button color="primary">start</button>
