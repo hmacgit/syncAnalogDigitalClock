@@ -17,11 +17,20 @@ import {map} from 'rxjs/operators';
 })
 export class AnalogClockComponent implements OnInit {
 
-  @Select(ClockState) clockState$: Observable<string>;
+  //@Select(ClockState) clockState$: Observable<string>;
   clockSt$: Observable<string>;
+  @Select(ClockState.getDate) clockDate$: Observable<string>;
+
   time: string;
 
-  constructor(private store: Store) { }
+  constructor(private store: Store) {
+    /*
+    this.clockSt$ = this.store.select(state => state.clock.date);
+    this.clockSt$.subscribe(
+      (x) => {this.timerId = x; console.log(x)}
+    );
+    */
+  }
 
   ngOnInit(): void {
 /*
@@ -30,6 +39,19 @@ export class AnalogClockComponent implements OnInit {
       .pipe(
         map((x) => 'date')
         );*/
+
+
+    this.clockDate$.subscribe(
+      (time) => {
+        this.timerId = time;
+        if(this.timerId !== '') {
+          this.hour = this.timerId.getHours();
+          this.minute = this.timerId.getMinutes();
+          this.second = this.timerId.getSeconds();
+          this.animateAnalogClock();
+        }
+      }
+    )
 
 
   }
@@ -48,9 +70,7 @@ export class AnalogClockComponent implements OnInit {
 
   ngAfterViewInit() {
     //this.timerId = this.getTime();
-    this.clockSt$.subscribe(
-      (x) => {this.timerId = x; console.log(x)}
-    );
+
   }
 
   animateAnalogClock() {

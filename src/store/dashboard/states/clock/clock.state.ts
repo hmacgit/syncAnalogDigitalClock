@@ -19,7 +19,10 @@ export class ClockState {
     return state;
   }
 
-
+  @Selector()
+  public static getDate(state: ClockStateModel) {
+    return state.date;
+  }
 
   @Action(SetClock)
   public setClock(ctx: StateContext<ClockStateModel>, { payload }: SetClock) {
