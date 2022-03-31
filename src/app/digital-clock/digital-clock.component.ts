@@ -41,9 +41,7 @@ export class DigitalClockComponent implements OnInit {
   startClock(): void {
     if(!this.isStart) {
       this.subscription = interval(1000).subscribe(()=> {
-          this.runtime = this.runtime ? new Date : this.runtime;
-          return this.setDate(this.runtime);
-          //return this.setDate(new Date());
+          return this.setDate(new Date);
       });
       this.isStart=true;
     }
@@ -70,7 +68,7 @@ export class DigitalClockComponent implements OnInit {
     date.setMinutes(Number(this.formMinute.value));
     date.setSeconds(Number(this.formSecond.value));
 
-    this.runtime = new Date (date);
+    this.runtime = date;
     this.startClock();
   }
 
