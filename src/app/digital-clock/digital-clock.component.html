@@ -1,16 +1,20 @@
 
 <div class="row">
   <div class="col-md-2 border-right"></div>
-  <div class="col-md-5 border-right">
+  <div class="col-md-4 border-right">
 
     <mat-card>
       <mat-card-title>Click and set the time</mat-card-title>
       {{hour}} : {{minute}} : {{second}} {{ampm}}
-      <input type="text" class="col-1"> : <input type="text" class="col-1"> :
-      <input type="text" class="col-1"> : <input type="text" class="col-1">
+      <div>
+        <input type="text" class="col-1"> :
+        <input type="text" class="col-1"> :
+        <input type="text" class="col-1"> {{ampm}}
+      </div>
+
       <div>
         <button (click)="startClock()" mat-raised-button color="primary">start</button>
-        <button (click)="stopClock()" mat-flat-button>stop</button>
+        <button (click)="stopClock()" mat-raised-button color="accent">stop</button>
       </div>
     </mat-card>
 
