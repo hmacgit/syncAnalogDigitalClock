@@ -1,5 +1,19 @@
 # SyncAnalogDigitalClock
 
+## Author: Hung Mac
+- Digital Clock will dispatch the Analog Clock.
+- The Analog Clock will subscribe to the dispatch.
+- This was build with redux ngsx framework.
+- Clock can start and stop.
+
+Called the following cli in order  
+- npm install @ngxs/store --save
+- npm install @ngxs/cli --save
+- npm i @ngxs/schematics --save
+- ng add @ngxs/schematics
+- ng generate @ngxs/schematics:starter-kit
+- ng generate @ngxs/schematics:store --name clock --spec
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.1.
 
 ## Development server
@@ -25,3 +39,4 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
