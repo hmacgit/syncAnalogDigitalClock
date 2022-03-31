@@ -10,6 +10,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {ReactiveFormsModule} from '@angular/forms';
 import {NgxsStoreModule} from '../store/store.module';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {NgxsStoreModule} from '../store/store.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    NgxsStoreModule
+    NgxsStoreModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

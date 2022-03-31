@@ -7,6 +7,7 @@ import {Store} from '@ngxs/store';
 import {SetClock} from '../../store/dashboard/states/clock/clock.actions';
 import {
   FormControl,
+  FormGroup,
   Validators
 } from '@angular/forms';
 
@@ -26,8 +27,9 @@ export class DigitalClockComponent implements OnInit {
   second: string
   ampm: string
 
-  formHour = new FormControl('10', Validators.required)
-
+  formHour = new FormControl('', Validators.required);
+  formMinute = new FormControl('', Validators.required);
+  formSecond = new FormControl('', Validators.required);
 
   constructor(private store: Store) {
   }
@@ -53,10 +55,16 @@ export class DigitalClockComponent implements OnInit {
     this.minute = date.getMinutes() < 10 ? '0' + date.getMinutes() :  date.getMinutes().toString();
     this.second = date.getSeconds()  < 10 ? '0' + date.getSeconds() : date.getSeconds().toString();
     this.ampm = date.getHours() < 12 ? 'AM' : 'PM';
+
+    this.formHour.setValue(this.hour);
+    this.formMinute.setValue(this.minute);
+    this.formSecond.setValue(this.second);
+
   }
 
   updateClock() {
 
+    this.startClock();
   }
 
   stopClock() {

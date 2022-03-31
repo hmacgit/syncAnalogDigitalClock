@@ -1,23 +1,18 @@
-
 <div class="row">
   <div class="col-md-5 border-right"></div>
   <div class="col-md-3 justify-content-center">
 
-    <mat-card >
       <mat-card-title>Click and set the time</mat-card-title>
-      {{hour}} : {{minute}} : {{second}} {{ampm}}
-      <div>
-
-        <input type="text" (focus)="stopClock()" (blur)="updateClock()" class="col-1"> :
-        <input type="text" (focus)="stopClock()" (blur)="updateClock()" class="col-1"> :
-        <input type="text" (focus)="stopClock()" (blur)="updateClock()" class="col-1"> :
+      <div class="justify-content-md-center">
+        <input id="name" type="text" [formControl]="formHour" (focus)="stopClock()" (blur)="updateClock()" class="col-1">
+        <input type="text" [formControl]="formMinute" (focus)="stopClock()" (blur)="updateClock()" class="col-1"> :
+        <input type="text"  [formControl]="formSecond" (focus)="stopClock()" (blur)="updateClock()" class="col-1">
       </div>
+      <br>
       <div>
         <button (click)="startClock()" mat-raised-button color="primary">start</button>
         <button (click)="stopClock()" mat-flat-button>stop</button>
       </div>
-    </mat-card>
-
 
   </div>
   <div class="col-md-4 border-right"></div>
