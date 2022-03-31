@@ -43,8 +43,8 @@ export class AnalogClockComponent implements OnInit {
 
     this.clockDate$.subscribe(
       (time) => {
-        this.timerId = time;
-        if(this.timerId !== '') {
+        if(time !== '') {
+          this.timerId = new Date(time) ;
           this.hour = this.timerId.getHours();
           this.minute = this.timerId.getMinutes();
           this.second = this.timerId.getSeconds();

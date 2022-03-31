@@ -41,7 +41,7 @@ export class DigitalClockComponent implements OnInit {
   }
 
   setDate(date: Date): void {
-    this.store.dispatch(new SetClock({date: date.getTime().toString()}) );
+    this.store.dispatch(new SetClock({date: date.toString()}) );
 
     this.day = this.daysOfweek[date.getDay()];
     this.hour = date.getHours() % 12  ?  '12' : date.getHours().toString();
