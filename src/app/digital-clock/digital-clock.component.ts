@@ -3,6 +3,7 @@ import {
   interval,
   Subscription
 } from 'rxjs';
+import {Store} from '@ngxs/store';
 
 @Component({
   selector: 'app-digital-clock',
@@ -20,7 +21,7 @@ export class DigitalClockComponent implements OnInit {
   second: string
   ampm: string
 
-  constructor() {
+  constructor(private store: Store) {
   }
 
   ngOnInit(): void {
