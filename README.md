@@ -4,9 +4,10 @@
 - Digital Clock will dispatch the Analog Clock.
 - The Analog Clock will subscribe to the dispatch.
 - This was build with redux ngsx framework.
+- Enter a new time to sync with the analog clock  
 - Clock can start and stop.
 
-Called the following cli in order  
+Called the following cli in order:   
 - npm install @ngxs/store --save
 - npm install @ngxs/cli --save
 - npm i @ngxs/schematics --save

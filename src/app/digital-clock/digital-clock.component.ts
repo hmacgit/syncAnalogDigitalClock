@@ -7,13 +7,7 @@ import {Store} from '@ngxs/store';
 import {SetClock} from '../../store/dashboard/states/clock/clock.actions';
 import {
   FormControl,
-  FormGroup,
-  Validators
 } from '@angular/forms';
-import {
-  mergeMap,
-  tap
-} from 'rxjs/operators';
 
 @Component({
   selector: 'app-digital-clock',
