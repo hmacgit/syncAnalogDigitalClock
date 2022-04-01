@@ -10,6 +10,10 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
+import {
+  mergeMap,
+  tap
+} from 'rxjs/operators';
 
 @Component({
   selector: 'app-digital-clock',
@@ -27,9 +31,9 @@ export class DigitalClockComponent implements OnInit {
   minute: number;
   second: number;
 
-  formHour = new FormControl('', Validators.required);
-  formMinute = new FormControl('', Validators.required);
-  formSecond = new FormControl('', Validators.required);
+  formHour = new FormControl('');
+  formMinute = new FormControl('');
+  formSecond = new FormControl('');
 
   constructor(private store: Store) {
   }
@@ -42,7 +46,8 @@ export class DigitalClockComponent implements OnInit {
   startClock(): void {
     if(!this.isStart) {
       this.subscription = interval(1000).subscribe(()=> {
-          return this.setDate(this.runtime);
+          //this.runtime = this.runtime !== null ? new Date : new Date;
+          return this.setDate(new Date);
       });
       this.isStart=true;
     }
