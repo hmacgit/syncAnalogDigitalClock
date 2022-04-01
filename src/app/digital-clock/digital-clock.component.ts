@@ -19,7 +19,7 @@ import {
 export class DigitalClockComponent implements OnInit {
   isStart: boolean = false;
   subscription = new Subscription();
-  runtime: Date = new Date();
+  runtime: Date;
 
   daysOfweek = ['sun', 'mon', 'tues', 'wed', 'thur', 'fri', 'sat'];
   day: any;
@@ -35,13 +35,14 @@ export class DigitalClockComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.runtime = new Date();
     this.startClock();
   }
 
   startClock(): void {
     if(!this.isStart) {
       this.subscription = interval(1000).subscribe(()=> {
-          return this.setDate(new Date);
+          return this.setDate(this.runtime);
       });
       this.isStart=true;
     }
@@ -55,9 +56,15 @@ export class DigitalClockComponent implements OnInit {
     this.minute = date.getMinutes();
     this.second = date.getSeconds();
 
+    this.formHour.setValue(date.getHours());
+    this.formMinute.setValue(date.getMinutes());
+    this.formSecond.setValue(date.getSeconds());
+
+    /*
     this.formHour.setValue(this.hour);
     this.formMinute.setValue(this.minute);
     this.formSecond.setValue(this.second);
+*/
 
   }
 

@@ -1,5 +1,6 @@
 import { State, Action, Selector, StateContext } from '@ngxs/store';
 import { SetClock } from './clock.actions';
+import {Injectable} from '@angular/core';
 
 
 export interface ClockStateModel {
@@ -12,6 +13,7 @@ export interface ClockStateModel {
     date: ''
   }
 })
+@Injectable()
 export class ClockState {
 
   @Selector()
